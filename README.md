@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-[![Codeship Status for mbvkken/academy-twitter-clone-frontend](https://app.codeship.com/projects/4889bbcd-8ecf-42ce-86c8-fccff92111e0/status?branch=master)](https://app.codeship.com/projects/442650)
+[![Codeship Status for mbvkken/academy-twitter-clone-frontend](https://app.codeship.com/projects/4889bbcd-8ecf-42ce-86c8-fccff92111e0/status?branch=main)](https://app.codeship.com/projects/442650)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
