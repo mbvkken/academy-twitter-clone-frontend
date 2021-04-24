@@ -11,7 +11,7 @@ class Authenticate extends React.Component {
     if (!isAuthenticated) {
       history.replace('/login');
     } else {
-      history.replace('/home');
+      history.replace('/feed');
     }
   }
 
