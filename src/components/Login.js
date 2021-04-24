@@ -91,9 +91,9 @@ class Login extends React.Component {
                         {loginStatus && <p>Logging in...</p>}
                         {error && <p>Unable to log in: {error.message}</p>}
                     </div>
-                    <div>
+                    {/* <div>
                         <Link to="/signup">Sign up</Link>
-                    </div>
+                    </div> */}
                 </form>                    
             </div>
         )
