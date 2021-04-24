@@ -4,13 +4,23 @@ import './App.css';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Login from './components/Login';
-// import Authenticate from './components/Authenticate'; 
+import Feed from './components/Feed';
+import Logout from './components/Logout';
+import Signup from './components/Signup';
+import UserFeed from './components/UserFeed';
+
+import withAuthentication from './hoc/with-authentication';
+
 
 function App() {
   return (
     <HashRouter>
     <Switch>
-      <Route path="/" component={Login} />
+      <Route path="/" exact component={withAuthentication(Feed)} />
+      <Route path="/login" component={Login} />
+      <Route path="/logout" component={Logout} />
+      <Route path="/signup" component={Signup} />
+      <Route path="/user/:handle" component={UserFeed} />
     </Switch>
     </HashRouter>
   );

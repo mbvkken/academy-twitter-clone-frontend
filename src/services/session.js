@@ -1,12 +1,23 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-export function checkUser(handle, password) {
+export async function registerUser({ name, handle, password }) {
+  return fetch(`${API_URL}/signup`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name, handle, password })
+  })
+  .then((res) => res.json());
+}
+
+export function checkUser({ handle, password }) {
     return fetch(`${API_URL}/session`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         }, 
-        body: JSON.stringify( {handle, password} )
+        body: JSON.stringify({ handle, password })
     })
     .then((result) => result.json());
 }

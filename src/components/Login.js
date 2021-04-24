@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { checkUser } from '../services/session';
 
 class Login extends React.Component {
@@ -32,17 +34,24 @@ class Login extends React.Component {
         const { handle, password } = this.state.loginDetails;
 
         try {
-            this.setState({ loginStatus: true, error: null });
-            const { token, error } = await checkUser({ handle, password }); 
+            this.setState({ 
+                loginStatus: true, 
+                error: null
+            });
 
-            if (error) {
-                throw new Error(error);
+            const result = await checkUser({
+                handle,
+                password
+            });
+
+            if (result.error) {
+                throw new Error(result.error);
             }
-            if (!token) {
+            if (!result.token) {
                 throw new Error('no token- try again');
             }
 
-            localStorage.setItem('twitter_clone_token', token);
+            localStorage.setItem('twitter_clone_token', result.token);
             history.push('/');
             }
              catch (error) {
@@ -51,8 +60,12 @@ class Login extends React.Component {
     }
 
     render() {
+
+        const { error, loginStatus } = this.state;
+
         return(
-            <div>
+
+            <div style={{textAlign: 'center'}}>
                 <h1>Login</h1>
                 <form> 
                     <label>
@@ -73,6 +86,13 @@ class Login extends React.Component {
                     </label>
                     <div>
                        <button onClick={this.handleLoginClick.bind(this)}>Login</button> 
+                    </div>
+                    <div>
+                        {loginStatus && <p>Logging in...</p>}
+                        {error && <p>Unable to log in: {error.message}</p>}
+                    </div>
+                    <div>
+                        <Link to="/signup">Sign up</Link>
                     </div>
                 </form>                    
             </div>
