@@ -9,7 +9,7 @@ import Logout from './components/Logout';
 import Signup from './components/Signup';
 import UserFeed from './components/UserFeed';
 
-import withAuthentication from './hoc/with-authentication';
+import withAuthentication from './hocs/with-authentication';
 
 
 function App() {
